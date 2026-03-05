@@ -4,15 +4,7 @@ let myLibrary = [
 
     {id: 1, title: "Harry Potter", author: "J.K. Rowling", pages: 200, read: false},
     {id: 2, title: "Harry Potter and Shrek", author: "J.K. Roarling", pages: 200, read: true},
-    {id: 1, title: "Harry Potter", author: "J.K. Rowling", pages: 200, read: false},
-    {id: 2, title: "Harry Potter and Shrek", author: "J.K. Roarling", pages: 200, read: true},
-    {id: 1, title: "Harry Potter", author: "J.K. Rowling", pages: 200, read: false},
-    {id: 2, title: "Harry Potter and Shrek", author: "J.K. Roarling", pages: 200, read: true},
-    {id: 1, title: "Harry Potter", author: "J.K. Rowling", pages: 200, read: false},
-    {id: 2, title: "Harry Potter and Shrek", author: "J.K. Roarling", pages: 200, read: true},
     
-    
-
 ];
 
 function Book(id, title, author, pages, read){
@@ -23,10 +15,32 @@ function Book(id, title, author, pages, read){
     this.read = read;
 }
 
+function addBookToLibrary(title, author, pages, read){
+    const id = crypto.randomUUID();
+    const newBook = new Book(id, title, author, pages, read);
+
+    myLibrary.push(newBook);
+    displayBooks(myLibrary);
+}
+
+const submitButton = document.querySelector("#submit");
+const dialog = document.getElementById('form-dialog');
+submitButton.addEventListener('click',function(event){
+    event.preventDefault();
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const pages = document.getElementById('pages').value;
+    const read = document.getElementById('read').value;
+    
+    dialog.close();
+    document.getElementById('form-inside').reset();
+    addBookToLibrary(title, author, pages, read)
+});
+
 const cardContainer = document.querySelector(".card-container")
 
 function displayBooks(myLibrary){
-    
+    cardContainer.textContent = '';
     myLibrary.forEach(book => {
         const card = document.createElement("div");
         card.classList.add("card");
@@ -51,6 +65,7 @@ function displayBooks(myLibrary){
         author.textContent = book.author;
         pages.textContent = book.pages + " pages";
         
+        checkbox.checked = book.read;
         readContainer.append(checkbox, label);
         card.append(title,author,pages,readContainer,removeButton );
         cardContainer.appendChild(card);

@@ -98,12 +98,22 @@ main{
 .card > button{
     font-size: x-small;
     cursor: pointer;
+    background-color: var(--white);
+    border: none;
+    height: 1.3rem;
+    width: 45%;
+    border-radius: 8px;
 }
 input[type='checkbox']{
     cursor: pointer;
+    border: none;
 }
 
 .input-group{
     display:flex;
     justify-content: flex-start;
+}
+
+input[type="checkbox"]:checked{
+    background-color: var(--light-green);
 }

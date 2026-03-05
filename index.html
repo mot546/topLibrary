@@ -24,12 +24,12 @@
         </div>
         <button class="add-book" command="show-modal" commandfor="form-dialog">+</button>
         <dialog id="form-dialog">
-            <form action="" method="post">
+            <form action="" method="post" id="form-inside">
                 <div class="input-group"><label for="title">Title:</label><input id="title" type="text" required></div>
                 <div class="input-group"><label for="author">Author: </label><input type="text" id="author" required></div>
                 <div class="input-group"><label for="pages">Pages: </label><input id="pages" type="text" required></div>
                 <div class="input-group"><label for="read">Finished</label><input id="read" type="checkbox"></div>
-                <button type="submit">Submit</button>
+                <button type="submit" id="submit">Submit</button>
                 <button type="button" commandfor="form-dialog" command="close">Close</button>
             </form>
         </dialog>
