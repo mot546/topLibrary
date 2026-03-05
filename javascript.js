@@ -4,6 +4,14 @@ let myLibrary = [
 
     {id: 1, title: "Harry Potter", author: "J.K. Rowling", pages: 200, read: false},
     {id: 2, title: "Harry Potter and Shrek", author: "J.K. Roarling", pages: 200, read: true},
+    {id: 1, title: "Harry Potter", author: "J.K. Rowling", pages: 200, read: false},
+    {id: 2, title: "Harry Potter and Shrek", author: "J.K. Roarling", pages: 200, read: true},
+    {id: 1, title: "Harry Potter", author: "J.K. Rowling", pages: 200, read: false},
+    {id: 2, title: "Harry Potter and Shrek", author: "J.K. Roarling", pages: 200, read: true},
+    {id: 1, title: "Harry Potter", author: "J.K. Rowling", pages: 200, read: false},
+    {id: 2, title: "Harry Potter and Shrek", author: "J.K. Roarling", pages: 200, read: true},
+    
+    
 
 ];
 
@@ -28,11 +36,23 @@ function displayBooks(myLibrary){
         author.classList.add("author");
         const pages = document.createElement("p");
         pages.classList.add("pages");
+        const readContainer = document.createElement("div");
+        readContainer.classList.add("read-container");
+        const label = document.createElement("label");
+        label.setAttribute("for",'read' )
+        const checkbox = document.createElement("input");
+        checkbox.setAttribute('type', "checkbox");
+        checkbox.id = 'read';
+        const removeButton = document.createElement("button");
+
+        removeButton.textContent = 'Remove';
+        label.textContent = "Finished";
         title.textContent = book.title;
         author.textContent = book.author;
-        pages.textContent = book.pages;
+        pages.textContent = book.pages + " pages";
         
-        card.append(title,author,pages);
+        readContainer.append(checkbox, label);
+        card.append(title,author,pages,readContainer,removeButton );
         cardContainer.appendChild(card);
     });
 }

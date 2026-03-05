@@ -33,15 +33,14 @@ header{
 
 main{
     background-color: var(--white);
-    padding: 1rem;
+    padding: 1.2rem 0 1.2rem 1.2rem;
 }
 
 .card-container{
-    display: flex;
-    flex-flow: row wrap;
-    gap: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 25%));
     min-height: 73vh;
-    padding-right: 6rem; 
+    gap: 1.5rem;
 }
 
 .card{
@@ -52,9 +51,8 @@ main{
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     gap: .3rem;
-    flex: 1;
 }
 
 .add-book{
@@ -76,19 +74,26 @@ main{
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: smaller;
+    margin-top: auto;
 }
 
 .book-title{
     font-size: larger;
-    font-weight: 600;
+    font-weight: 700;
 }
 
-.author, .pages{
+.author{
     font-size: smaller;
 }
-.card > ul{
+.pages{
+    font-size: xx-small;
+}
+
+.read-container, .card > button{
     align-self: flex-end;
-    font-size: smaller;
-    justify-self: flex-end;
-    margin-top: auto;
+    
+}
+.card > button{
+    font-size: x-small;
 }
