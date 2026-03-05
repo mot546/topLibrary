@@ -19,11 +19,20 @@
                 <p class="author">JK Rowling</p>
                 <p class="pages">200 pages</p>
                 <div class="read-container"><input type="checkbox" id="read"><label for="read">Finished</label></div>
-                <button>Remove</button>
+                <button command>Remove</button>
             </div>
         </div>
-
-        <button class="add-book">+</button>
+        <button class="add-book" command="show-modal" commandfor="form-dialog">+</button>
+        <dialog id="form-dialog">
+            <form action="" method="post">
+                <div class="input-group"><label for="title">Title:</label><input id="title" type="text" required></div>
+                <div class="input-group"><label for="author">Author: </label><input type="text" id="author" required></div>
+                <div class="input-group"><label for="pages">Pages: </label><input id="pages" type="text" required></div>
+                <div class="input-group"><label for="read">Finished</label><input id="read" type="checkbox"></div>
+                <button type="submit">Submit</button>
+                <button type="button" commandfor="form-dialog" command="close">Close</button>
+            </form>
+        </dialog>
     </main>
     <footer></footer>
 </body>
