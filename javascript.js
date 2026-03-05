@@ -31,7 +31,7 @@ submitButton.addEventListener('click',function(event){
     const author = document.getElementById('author').value;
     const pages = document.getElementById('pages').value;
     let read = document.getElementById('read').value;
-
+    
     read === 'on'? read = false: read =true;
     
     dialog.close();
@@ -60,6 +60,13 @@ function displayBooks(myLibrary){
         checkbox.setAttribute('type', "checkbox");
         checkbox.id = 'read';
         const removeButton = document.createElement("button");
+        removeButton.id = book.id;
+        
+        removeButton.addEventListener('click', function(event){
+            const toDelete = myLibrary.findIndex(book => book.id == event.target.id);
+            myLibrary.splice(toDelete, 1);
+            displayBooks(myLibrary);
+        });
 
         removeButton.textContent = 'Remove';
         label.textContent = "Finished";

@@ -54,6 +54,7 @@ main{
     align-items: flex-start;
     gap: .3rem;
     box-shadow: 2px 5px 8px rgb(0, 0, 0, 0.4);
+    
 }
 
 .add-book{
