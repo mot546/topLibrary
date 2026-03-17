@@ -76,9 +76,7 @@ class DomController{
         const title = document.getElementById('title').value;
         const author = document.getElementById('author').value;
         const pages = document.getElementById('pages').value;
-        let read = document.getElementById('read').value;
-        
-        read === 'on'? read = false: read =true;
+        let read = document.getElementById('read').checked;
         
         dialog.close();
         document.getElementById('form-inside').reset();
