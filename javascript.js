@@ -76,13 +76,15 @@ class DomController{
         const title = document.getElementById('title').value;
         const author = document.getElementById('author').value;
         const pages = document.getElementById('pages').value;
-        let read = document.getElementById('read').checked;
+        let read = document.getElementById('read-dialog').checked;
+        console.log(read);
         
-        dialog.close();
         document.getElementById('form-inside').reset();
         library.addBookToLibrary(title, author, pages, read);
         });
     }
+
+
 }
 
 const library = new Library;
