@@ -7,9 +7,10 @@ class Library {
     addBookToLibrary(title, author, pages, read){
     const id = crypto.randomUUID();
     const newBook = new Book(id, title, author, pages, read);
-
+    
     Library.myLibrary.push(newBook);
     dom.displayBooks(Library.myLibrary);
+    
     }   
 }
 
@@ -73,21 +74,51 @@ class DomController{
     const dialog = document.getElementById('form-dialog');
     submitButton.addEventListener('click',function(event){
         event.preventDefault();
-        const title = document.getElementById('title').value;
-        const author = document.getElementById('author').value;
-        const pages = document.getElementById('pages').value;
-        let read = document.getElementById('read-dialog').checked;
-        console.log(read);
-        
-        document.getElementById('form-inside').reset();
-        library.addBookToLibrary(title, author, pages, read);
+
+        if(validate.displayValidations()){
+
+            const title = document.getElementById('title').value;
+            const author = document.getElementById('author').value;
+            const pages = document.getElementById('pages').value;
+            let read = document.getElementById('read-dialog').checked;
+            console.log(read);
+            
+            document.getElementById('form-inside').reset();
+            library.addBookToLibrary(title, author, pages, read);
+        }
         });
     }
+}
 
-
+class Validate{
+    displayValidations(){
+        const formDialog = document.querySelector("#form-inside");
+        if(formDialog.elements['title'].validity.tooShort){
+            formDialog.elements['title'].setCustomValidity("Habaan mo pa boy");
+            formDialog.elements['title'].reportValidity();
+            return false;
+        }
+        else if(formDialog.elements['author'].validity.tooShort){
+            formDialog.elements['author'].setCustomValidity("Habaan mo pa boy");
+            formDialog.elements['author'].reportValidity();
+            return false;
+        }
+        else if(formDialog.elements['pages'].validity.tooShort){
+            formDialog.elements['pages'].setCustomValidity("Damihan mo pa boy");
+            formDialog.elements['pages'].reportValidity();
+            return false;
+        }
+        else{
+            formDialog.elements['pages'].setCustomValidity("");
+            formDialog.elements['author'].setCustomValidity("");
+            formDialog.elements['title'].setCustomValidity("");
+            return true;
+        }
+    }
 }
 
 const library = new Library;
 const dom = new DomController;
+const validate = new Validate;
 dom.displayBooks(Library.myLibrary);
 dom.dialogEventListener();
